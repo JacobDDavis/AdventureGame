@@ -1,6 +1,6 @@
 /**
  * Game.cpp - Jacob Davis, March 2018
- * Defines the starting point of the text-based adventure game. 
+ * Defines the starting point of the text-based adventure game.
  * Program begins by initializing rooms and introducing the action string.
  * The program then begins the game loop.
  */
@@ -13,16 +13,16 @@
 using namespace std;
 
 int main()
-{   
+{
     //initialize rooms
     Room *fort = new Room("Fort", "You are in the fort.");
     Room *canopy = new Room("Canopy", "You are in the canopy.");
     Room *cave = new Room("Cave", "You are in the cave.");
     Room *woods = new Room("Woods", "You are in the woods.");
     Room *tunnel = new Room("Tunnel", "You are in the tunnel.");
-    Room *dungeon = new Room("Family Room", "You are in the Dungeon.");
+    Room *dungeon = new Room("Dungeon", "You are in the Dungeon.");
     Room *forest = new Room("Forest", "You are in the Forest.");
-    
+
     //connect rooms together
     canopy->connect(fort, "South");
     canopy->connect(dungeon, "West");
@@ -46,12 +46,12 @@ int main()
     woods->connect(fort, "North");
 
     Room *currentRoom = fort;//sets the game's starting location
-    
+
     string action;
 
     //Game loop runs until the game is finished
-    /*-------------Begin game-------------*/    
-    
+    /*-------------Begin game-------------*/
+
     cout << "Welcome to the game. Type 'quit' to end the game at any time.\n";
     while (action != "quit")
     {
@@ -63,7 +63,7 @@ int main()
         cin >> action;
 
         Room* isPossible = currentRoom->getConnected(action);//isPossible created to test if the direction from input is valid
-        
+
         while (action != "quit" && isPossible == NULL)
         {
             cout << "Invalid input" << endl;

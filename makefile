@@ -1,10 +1,12 @@
-Game: Game.o Room.o
-	g++ -g -o Game Game.o Room.o
+CFLAGS=-Wall -W -O0 -fprofile-arcs -ftest-coverage
 
-Game.o: Game.cpp
-	g++ -c Game.cpp
+all: advgame
 
-Room.o: Room.cpp Room.h
-	g++  -c  Room.cpp Room.h
+advgame:
+	g++ $(CFLAGS) -o Game Game.cpp Room.cpp
 
+test: advgame
+	./Game
 
+clean:
+	rm -rf *.o *.gcno *.gcda *.gcov advgame idir
